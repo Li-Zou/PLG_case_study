@@ -1,0 +1,3 @@
+,K-Nearest Neighbors,Logistic Regression,Random Forest,Gradient Boosting
+ROC AUC,0.5866,0.7866,0.8189,0.8245
+PR AUC,0.3014,0.4037,0.4372,0.4593
