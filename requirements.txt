@@ -1,0 +1,15 @@
+os
+pandas
+chardet
+numpy
+dateutil
+datetime
+currency_converter
+scipy
+scikit-learn
+imblearn
+logging
+pickle
+seaborn
+dvc
+-e .

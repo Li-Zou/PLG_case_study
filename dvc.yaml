@@ -1,0 +1,36 @@
+stages:
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+      - data/raw
+      - src/preprocessing.py
+    outs:
+      - data/processed
+
+  
+  models:
+    cmd: python src/models.py
+    deps:
+      - data/processed
+      - src/models.py
+    outs:
+      - data/outputs
+
+
+  causal:
+    cmd: python src/causal.py
+    deps:
+      - data/processed
+      - src/causal.py
+    outs:
+      - data/outputs
+
+
+  
+  policy:
+    cmd: python src/policy.py
+    deps:
+        - data/outputs
+        - src/policy.py
+    metrics:
+        - data/outputs
