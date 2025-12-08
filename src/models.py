@@ -8,7 +8,6 @@ from sklearn.metrics import roc_auc_score, auc, precision_recall_curve
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-import logging
 import pickle
 import os
 
@@ -87,13 +86,8 @@ ac4,GBoot_model=GradientBoostingClassifier_my(X_train, X_test, y_train, y_test)
 
 def save_model(model, file_path: str) -> None:
     """Save the trained model to a file."""
-    try:
-        with open(file_path, 'wb') as file:
+    with open(file_path, 'wb') as file:
             pickle.dump(model, file)
-        logger.debug('Model saved to %s', file_path)
-    except Exception as e:
-        logger.error('Error occurred while saving the model: %s', e)
-        raise
 
 prediction_acc=pd.DataFrame({'K-Nearest Neighbors':ac1,'Logistic Regression':ac2,'Random Forest':ac3,'Gradient Boosting':ac4},index=['ROC AUC','PR AUC'])
 
