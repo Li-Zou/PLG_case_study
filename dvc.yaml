@@ -6,7 +6,6 @@ stages:
       - src/preprocessing.py
     outs:
       - data/processed
-
   
   models:
     cmd: python src/models.py
@@ -14,8 +13,11 @@ stages:
       - data/processed
       - src/models.py
     outs:
-      - data/outputs
-
+      - data/outputs/knn_model.pkl
+      - data/outputs/LR_model.pkl
+      - data/outputs/RF_model.pkl
+      - data/outputs/GBoost_model.pkl
+      - data/outputs/LTV.csv
 
   causal:
     cmd: python src/causal.py
@@ -23,14 +25,13 @@ stages:
       - data/processed
       - src/causal.py
     outs:
-      - data/outputs
+      - data/outputs/AB_test_result.csv
+      - data/outputs/individual_treatment_effects.csv
 
-
-  
   policy:
     cmd: python src/policy.py
     deps:
-        - data/outputs
+        - data/outputs/individual_treatment_effects.csv
         - src/policy.py
     metrics:
-        - data/outputs
+        - data/outputs/targeting_customer.csv

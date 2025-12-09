@@ -1,15 +1,12 @@
-os
+
 pandas
 chardet
 numpy
-dateutil
-datetime
-currency_converter
+python-dateutil
+CurrencyConverter
 scipy
 scikit-learn
 imblearn
-logging
-pickle
 seaborn
 dvc
 -e .
