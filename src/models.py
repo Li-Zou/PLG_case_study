@@ -11,11 +11,6 @@ from sklearn.neighbors import KNeighborsClassifier
 import pickle
 import os
 
-
-# logging configuration
-logger = logging.getLogger('model_building')
-logger.setLevel('DEBUG')
-
 df=pd.read_csv('./data/processed/retention_model_data.csv')
 
 ##Remove features that are not useful to train ML models
@@ -87,7 +82,7 @@ ac4,GBoot_model=GradientBoostingClassifier_my(X_train, X_test, y_train, y_test)
 def save_model(model, file_path: str) -> None:
     """Save the trained model to a file."""
     with open(file_path, 'wb') as file:
-            pickle.dump(model, file)
+        pickle.dump(model, file)
 
 prediction_acc=pd.DataFrame({'K-Nearest Neighbors':ac1,'Logistic Regression':ac2,'Random Forest':ac3,'Gradient Boosting':ac4},index=['ROC AUC','PR AUC'])
 
